@@ -8,7 +8,7 @@ QuizDetails.propTypes = {
 };
 
 function QuizDetails(props) {
-  const { quiz, onClickingDelete } = props;
+  const { quiz, onClickingDelete, onClickingEdit } = props;
   return (
     <React.Fragment>
       <h1>{quiz.name}</h1>
@@ -19,8 +19,8 @@ function QuizDetails(props) {
       <h3>{quiz.option2}</h3>
       <h3>{quiz.option3}</h3>
       <hr/>
+      <Button variant="light" onClick={()=>onClickingEdit(quiz)}>That's not what I meant...</Button>
       <Button variant="danger" onClick={()=>onClickingDelete(quiz.id)}>Delete this garbage quiz! Get it out of here!</Button>
-      <Button variant="warning" onClick={()=>console.log(quiz)}>Click to log the console bro</Button>
     </React.Fragment>
   );
 }

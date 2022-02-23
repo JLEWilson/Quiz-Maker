@@ -20,7 +20,9 @@ function NewQuizForm(props) {
         option2: event.target.option2.value,
         option3: event.target.option3.value,
         user: user,
-        timeOpen: firestore.FieldValue.serverTimestamp()
+        timeOpen: firestore.FieldValue.serverTimestamp(),
+        results: { "1": 0, "2": 0, "3": 0 },
+        users: []
       }
     );
   }

@@ -46,13 +46,14 @@ class QuizControl extends Component {
         option2: quiz.get("option2"),
         option3: quiz.get("option3"),
         user: quiz.get("user"),
-        id: quiz.id
+        id: quiz.id,
+        results: quiz.get("results"),
+        users: quiz.get("users") || []
       }
       this.setState({selectedQuiz: firestoreQuiz });
     });
   }
   handleDeletingQuiz = (id) => {
-    console.log(id);
     this.props.firestore.delete({collection: 'quizzes', doc: id});
     this.setState({selectedQuiz: null});
   }
@@ -67,7 +68,8 @@ class QuizControl extends Component {
       currentState = <QuizDetails
       quiz={this.state.selectedQuiz}
       onClickingDelete={this.handleDeletingQuiz}
-      onClickingEdit = {this.handleEditClick}/>
+      onClickingEdit = {this.handleEditClick}
+      selectQuiz={this.handleChangingSelectedQuiz}/>
     }else {
       currentState = <QuizList selectQuiz={this.handleChangingSelectedQuiz}/>
     }
